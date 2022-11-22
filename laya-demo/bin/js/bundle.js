@@ -2,14 +2,6 @@
   'use strict';
 
   var Event = Laya.Event;
-  turbo.setPara({
-      autoTrack: {
-          appLaunch: true,
-          appShow: true,
-          appHide: true,
-      },
-      show_log: true,
-  });
   class Demo extends Laya.Scene {
       constructor() {
           super();
@@ -17,6 +9,14 @@
           this.loadScene("DemoScene.json");
       }
       onEnable() {
+          turbo.setPara({
+              autoTrack: {
+                  appLaunch: true,
+                  appShow: true,
+                  appHide: true,
+              },
+              show_log: true,
+          });
           turbo.init("gZGljPsq7I4wc3BMvkAUsevQznx1jahi", "your_client_id");
           this.scene.btn1.on(Event.CLICK, this, this.handleRegister);
           this.scene.btn2.on(Event.CLICK, this, this.handleEvent);

@@ -8,6 +8,7 @@ import {
   isObject,
   xhrPromise,
   getMiniGamePlatform,
+  dateFormate,
 } from "./utils/tools";
 import { eventProperty } from "./lib/eventProperty";
 
@@ -93,11 +94,7 @@ turbo._store = {
       turbo._is_first_launch = true;
       localStorage.setItem(turbo._para.storage_store_key, "1");
       turbo.profileSetOnce({
-        $first_visit_time: new Date()
-          .toLocaleString("cn", {
-            hour12: false,
-          })
-          .replaceAll("/", "-"),
+        $first_visit_time: dateFormate(new Date(), true),
       });
     }
   },
@@ -124,10 +121,8 @@ turbo._meta = {
 };
 
 function initWechatGameAppProxy() {
-  console.log(turbo?._para?.autoTrack?.appShow, 127);
   if (turbo?._para?.autoTrack?.appShow) {
     wx.onShow(function (para) {
-      console.log("onshow", para);
       if (!turbo._meta.life_state.app_launched) {
         if (turbo?._para?.autoTrack?.appLaunch) {
           const option = wx.getLaunchOptionsSync() || {};
@@ -137,10 +132,8 @@ function initWechatGameAppProxy() {
       turbo._autoTrackCustom.appShow(para);
     });
   }
-  console.log(turbo?._para?.autoTrack?.appHide, 140);
   if (turbo?._para?.autoTrack?.appHide) {
     wx.onHide(function () {
-      console.log("onHide");
       turbo._autoTrackCustom.appHide();
     });
   }
