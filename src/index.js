@@ -9,6 +9,7 @@ import {
   xhrPromise,
   getMiniGamePlatform,
   dateFormate,
+  setQuery
 } from "./utils/tools";
 import { eventProperty } from "./lib/eventProperty";
 
