@@ -25,17 +25,21 @@ export const eventProperty = {
   // getNetworkType非同步，不返回值
   getNetworkType: function () {
     const _this = this;
-    try {
+    return new Promise(function (resolve, reject) {
       if (wx?.getNetworkType) {
         wx.getNetworkType({
           success: function (res) {
             _this.properties.$network_type = res.networkType;
+            resolve(res);
+          },
+          fail: function (err) {
+            reject(err);
           },
         });
+      } else {
+        resolve({ networkType: undefined });
       }
-    } catch (error) {
-      logger.info(error);
-    }
+    });
   },
   getSystemInfoSync: function () {
     try {
