@@ -1,6 +1,5 @@
 import Event = Laya.Event;
 
-
 export default class Demo extends Laya.Scene {
   static instance: Demo;
 
@@ -60,6 +59,8 @@ export default class Demo extends Laya.Scene {
           real_amount: 200,
         },
         timestamp: 1000,
+        use_client_time: true,
+        trace_id: "your_trace_id",
       })
       .then((res) => {
         console.log(res);
