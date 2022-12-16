@@ -1,6 +1,6 @@
 {
   "name": "turbo-sdk-laya",
-  "version": "3.2.8",
+  "version": "3.3.1",
   "description": "turbo laya sdk",
   "main": "turbo.min.js",
   "scripts": {
