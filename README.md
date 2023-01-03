@@ -1,6 +1,6 @@
-# laya2.x接入
+# laya2.x 接入
 
-本文档为laya2.x接入 [turbo 引力引擎](https://gravity-engine.com/)的技术接入方案，具体 Demo 请参考[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo)。
+本文档为 laya2.x 接入 [turbo 引力引擎](https://gravity-engine.com/)的技术接入方案，具体 Demo 请参考[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo)。
 
 注：目前仅支持微信小游戏平台。
 
@@ -14,26 +14,26 @@
 
 #### 1.1 导入 SDK
 
-##### Typescript项目：
+##### Typescript 项目：
 
-- 从[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo/releases)上获取laya SDK 源码；
+- 从[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo/releases)上获取 laya SDK 源码；
 - 将声明文件 `turbo.d.ts`放入 `libs`目录；
 - 将 SDK 文件 `turbo-ts.min.js`放入 `bin/js`目录中
 - 修改 `bin/index.js` 文件，加载 turbo SDK：
 
 ```javascript
-loadLib("js/turbo-ts.min.js")
-loadLib("js/bundle.js")
+loadLib("js/turbo-ts.min.js");
+loadLib("js/bundle.js");
 ```
 
-至此导入完成，您使用时不需要额外引入，turbo被挂载至全局。
+至此导入完成，您使用时不需要额外引入，turbo 被挂载至全局。
 
-##### Javascript项目：
+##### Javascript 项目：
 
-* 从[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo/releases)上获取laya SDK 源码；
-* 将turbo.min.js引入sdk：
+- 从[GitHub](https://github.com/GravityInfinite/Turbo-Laya-Demo/releases)上获取 laya SDK 源码；
+- 将 turbo.min.js 引入 sdk：
   ```javascript
-  import turbo from "turbo.min.js"
+  import turbo from "turbo.min.js";
   ```
 
 #### 1.2 配置初始化参数
@@ -162,9 +162,7 @@ turbo
     use_client_time: false, // 可选
     trace_id: "your_trace_id", // 可选
   })
-  .then(() => {
-
-  });
+  .then(() => {});
 ```
 
 #### 2.6 查询用户信息
@@ -211,9 +209,7 @@ turbo
       },
     ]
  */
-turbo.queryUser().then((data) => {
-
-});
+turbo.queryUser().then((data) => {});
 ```
 
 #### 2.7 设置事件公共属性
