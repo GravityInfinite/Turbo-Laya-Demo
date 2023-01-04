@@ -166,18 +166,32 @@ async function checkAppLaunch() {
     //   query: option?.query || {},
     //   scene: option?.scene || "",
     // });
-    const res = await eventProperty.getNetworkType();
-    sendOnce({
-      type: "track",
-      event: "$MPLaunch",
-      properties: {
-        $network_type: res?.networkType,
-        $is_first_time: turbo._is_first_launch,
-        $url_query: setQuery(option?.query || {}),
-        $scene: String(option.scene || ""),
-      },
-      time: Date.now(),
-    });
+    try {
+      const res = await eventProperty.getNetworkType();
+      sendOnce({
+        type: "track",
+        event: "$MPLaunch",
+        properties: {
+          $network_type: res?.networkType,
+          $is_first_time: turbo._is_first_launch,
+          $url_query: setQuery(option?.query || {}),
+          $scene: String(option.scene || ""),
+        },
+        time: Date.now(),
+      });
+    } catch (e) {
+      sendOnce({
+        type: "track",
+        event: "$MPLaunch",
+        properties: {
+          $network_type: "none",
+          $is_first_time: turbo._is_first_launch,
+          $url_query: setQuery(option?.query || {}),
+          $scene: String(option.scene || ""),
+        },
+        time: Date.now(),
+      });
+    }
   }
 }
 
