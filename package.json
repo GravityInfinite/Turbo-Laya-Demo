@@ -4,7 +4,7 @@
   "description": "turbo laya sdk",
   "main": "turbo.min.js",
   "scripts": {
-    "build": "webpack --config ./webpack.config.js"
+    "build": "webpack --config ./webpack.config.js && cp ./dist/turbo-ts.min.js ./laya-demo/bin/js/turbo-ts.min.js && cp ./dist/turbo-ts.min.js ./laya-demo/release/wxgame/js/turbo-ts.min.js"
   },
   "keywords": [
     "turbo",
