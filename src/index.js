@@ -25,7 +25,6 @@ turbo._globalData = {
   client_id: "",
 };
 turbo._batch_send_default = batch_send_default;
-turbo._is_first_launch = false;
 turbo._current_scene = null;
 turbo._store = {
   storageInfo: null,
@@ -92,13 +91,13 @@ turbo._store = {
   init: function () {
     const info = this.getStorage();
     if (!info) {
-      turbo._is_first_launch = true;
       localStorage.setItem(turbo._para.storage_store_key, "1");
       const commonProps = eventProperty.getProperties();
       turbo.profileSetOnce({
         $first_visit_time: dateFormate(new Date(), true),
         $os: commonProps.$os,
         $brand: commonProps.$brand,
+        $manufacturer: commonProps.$manufacturer,
         $model: commonProps.$model,
       });
     }
@@ -136,7 +135,6 @@ function initWechatGameAppProxy() {
             type: "track",
             event: "$MPLaunch",
             properties: {
-              $is_first_time: turbo._is_first_launch,
               $url_query: setQuery(option.query),
               $scene: String(option.scene),
             },
@@ -173,7 +171,6 @@ async function checkAppLaunch() {
         event: "$MPLaunch",
         properties: {
           $network_type: res?.networkType,
-          $is_first_time: turbo._is_first_launch,
           $url_query: setQuery(option?.query || {}),
           $scene: String(option.scene || ""),
         },
@@ -185,7 +182,6 @@ async function checkAppLaunch() {
         event: "$MPLaunch",
         properties: {
           $network_type: "none",
-          $is_first_time: turbo._is_first_launch,
           $url_query: setQuery(option?.query || {}),
           $scene: String(option.scene || ""),
         },
