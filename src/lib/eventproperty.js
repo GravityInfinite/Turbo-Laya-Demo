@@ -55,6 +55,7 @@ export const eventProperty = {
           $manufacturer: info.brand,
           $lib_version: "3.3.4",
           $lib: "Laya",
+          $system_language: info.language,
         };
         for (let item in temp_systeminfo) {
           if (temp_systeminfo.hasOwnProperty(item)) {
