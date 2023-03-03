@@ -73,7 +73,10 @@ export const register = function (e = {}) {
     data.ad_data = { gdt_vid: query?.gdt_vid || "" };
   } else if (platform === "baidu") {
     data.ad_data = { bd_vid: query?.bd_vid || "" };
+  } else if (platform === "gravity") {
+    data.ad_data = { turbo_vid: query?.turbo_vid || "" };
   }
+  data.query_object = query;
   if (query?.turbo_promoted_object_id) {
     data.promoted_object_id = query?.turbo_promoted_object_id;
   }

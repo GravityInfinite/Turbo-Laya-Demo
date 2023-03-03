@@ -53,7 +53,7 @@ export const eventProperty = {
           $model: info.model,
           $brand: String(info.brand).toLocaleUpperCase(),
           $manufacturer: info.brand,
-          $lib_version: "3.3.4",
+          $lib_version: "3.3.5",
           $lib: "Laya",
           $system_language: info.language,
         };

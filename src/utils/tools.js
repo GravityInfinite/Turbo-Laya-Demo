@@ -37,6 +37,8 @@ export function getPlatForm() {
     return "tencent";
   } else if (query.bd_vid) {
     return "baidu";
+  } else if (query.turbo_vid) {
+    return "gravity";
   } else {
     return "";
   }
